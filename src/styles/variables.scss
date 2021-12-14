@@ -1,0 +1,38 @@
+$blue: rgb(71, 120, 255);
+$black: #333;
+$animation: linear 300ms;
+
+%shadow {
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+%input {
+  border: 2px solid $black;
+  font-size: 18px;
+  padding: 5px;
+  outline: 0;
+  transition: $animation;
+  border-radius: 5px;
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  &:focus {
+    border-color: $blue;
+    @extend %shadow;
+  }
+}
+%btn {
+  padding: 10px;
+  background-color: $blue;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: $animation;
+  &:active {
+    transform: scale(1.1);
+  }
+}

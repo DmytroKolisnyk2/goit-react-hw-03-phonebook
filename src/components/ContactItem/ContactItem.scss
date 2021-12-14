@@ -1,0 +1,25 @@
+@import "styles/variables.scss";
+
+.list__btn {
+  @extend %btn;
+}
+
+.list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.list__text {
+  font-size: 18px;
+  & span {
+    margin-right: 5px;
+    text-decoration: underline;
+  }
+}
+
+.list{
+  padding: 0;
+}
