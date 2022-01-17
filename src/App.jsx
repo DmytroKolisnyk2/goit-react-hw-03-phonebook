@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import { info } from "@pnotify/core";
+
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
+import Message from "./components/Message/Message";
+
 import "./styles/App.scss";
-import { info } from "@pnotify/core";
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/BrightTheme.css";
-import Message from "./components/Message/Message";
 
 class App extends Component {
   state = {
@@ -40,8 +42,10 @@ class App extends Component {
   };
 
   render() {
-    const query = this.state.filter.toLocaleLowerCase();
-    const visibleContacts = this.state.contacts.filter((element) =>
+ const { filter, contacts } = this.state;
+
+    const query = filter.toLocaleLowerCase();
+    const visibleContacts = contacts.filter((element) =>
       element.name.toLocaleLowerCase().includes(query)
     );
 
@@ -52,14 +56,14 @@ class App extends Component {
             <h1 className="headline">Phonebook</h1>
 
             <h2>Add new contact</h2>
-            <ContactForm onSubmitHandler={this.addContact} contacts={this.state.contacts} />
+            <ContactForm onSubmitHandler={this.addContact} contacts={contacts} />
           </div>
           <div className="list-wrapper">
             <h2>Contacts</h2>
-            <Filter value={this.state.filter} onChange={this.filterOnChange} />
+            <Filter value={filter} onChange={this.filterOnChange} />
 
             {/* Додаткова опція)) */}
-            {this.state.filter && <Message />}
+            {filter && <Message />}
 
             <ContactList deleteContact={this.deleteContact} contacts={visibleContacts} />
           </div>
